@@ -1,7 +1,5 @@
 # covid-risk-assessment
 
-# covid-risk-assessment
-
 ## 1. What is the problem you’re solving?
 
 Currently, there is no way for us to really measure and assess our risk of getting COVID-19 with our day to day activity. 
