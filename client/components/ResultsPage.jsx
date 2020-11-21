@@ -18,12 +18,11 @@ function ResultsPage(props) {
   }
 
   return (
-    <div>
-      <h1>Results Page</h1>
+    <div id="results-window">
       <div>
-        <h3>Your Results:</h3>
-        <h5>Risk level based on behaviors: {props.riskLevel}</h5>
-        <h5>The riskiest behaviors you engage in include:</h5>
+        <h3 id="results-header">Your Results:</h3>
+        <h5 className="results-label">Risk level based on behaviors: {props.riskLevel}</h5>
+        <h5 className="results-label">The riskiest behaviors you engage in include:</h5>
         {activities}
       </div>
     </div>

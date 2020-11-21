@@ -21,9 +21,11 @@ function AssessmentWindow(props) {
   //console.log(questions);
 
   return (
-    <div className="assessment-window">
+      <div className="assessment-window">
       <h3>Take The Assessment</h3>
-      {questions}
+      <div id='questions'>
+        {questions}
+      </div>
     </div>
   );
 }

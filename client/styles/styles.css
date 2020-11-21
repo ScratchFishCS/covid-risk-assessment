@@ -19,7 +19,7 @@ body {
 
 h1 {
 	font-family: 'Shrikhand', cursive;
-	font-size: 5em;
+	font-size: 4.25em;
 	color: #3a057b;
 	padding: 0;
 	margin: 0 0 0 60px;
@@ -40,7 +40,7 @@ h1 {
 	border: dotted 0px grey;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	font-size: 1.3em;
+	font-size: 1.25em;
 	/* margin: 10px; */
 	padding-top: 15px;
 }
@@ -64,7 +64,7 @@ h1 {
 	background: #ffffff;
 	flex: 1;
 	max-width: 100%;
-	padding: 20px 30px;
+	padding: 25px 30px;
 	/* margin: 0 60px; */
 	/* margin: 40px 100px 40px 40px; */
 	box-shadow: 5px 10px 20px rgba(10, 10, 10, 0.2);
@@ -76,15 +76,15 @@ h1 {
 	font-weight: bold;
 	font-size: 2em;
 	color: #fe6c06;
-	padding: 5px 0;
+	padding: 5px 0 0 0;
 	margin: 0px;
 }
 
 .about-window p {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	font-size: 1.25em;
-	padding: 0px;
+	font-size: 1em;
+	padding: 10px 0 0 0;
 	margin: 0;
 }
 
@@ -107,4 +107,47 @@ h1 {
 	color: #fe6c06;
 	padding: 0;
 	margin: 0 0 5px 0;
+}
+
+#results-header {
+	font-family: 'Shrikhand', cursive;
+	font-weight: bold;
+	font-size: 2.5em;
+	color: #3a057b;
+	padding: 5px 0;
+	margin: 0px;
+}
+
+.results-label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-size: 1.75em;
+	color: #3a057b;
+	padding: 5px 0;
+	margin: 0px;
+}
+
+.activity {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 2em;
+	color: #fe6c06;
+	padding: 0;
+	margin: 0;
+}
+
+#results-window {
+	max-width: 80%;
+	/* align-self: center; */
+	padding: 30px 40px;
+	margin: 0 60px;
+	/* margin: 40px 40px 40px 0; */
+	border-radius: 10px;
+	background: #ffffff;
+	box-shadow: 5px 10px 20px rgba(10, 10, 10, 0.2);
+}
+
+#questions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }

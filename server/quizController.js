@@ -30,11 +30,11 @@ const riskFactor = {
 }
 
 const risk = {
-  1: 'low',
-  2: 'lowMod',
-  3: 'mod',
-  4: 'modHigh',
-  5: 'high',
+  1: 'Low',
+  2: 'Moderate Low',
+  3: 'Moderate',
+  4: 'Moderate High',
+  5: 'High',
 }
 
 quizController.calculateRisk = (req, res, next) => {

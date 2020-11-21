@@ -8,7 +8,6 @@ function AssessmentPage(props) {
   console.log(props);
   return (
     <div>
-      <h1>Assessment Page</h1>
       <div id="assessment-page">
         <div className="window">
           <AboutWindow />
