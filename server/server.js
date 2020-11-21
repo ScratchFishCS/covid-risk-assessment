@@ -8,10 +8,6 @@ app.use(express.json());
 
 // statically serve everything in the build folder on the route '/build'
 app.use('/build', express.static(path.join(__dirname, '../build')));
-// serve index.html on all the pages
-// app.use('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../index.html'));
-// });
 
 // route handlers:
 //  will receive the Submit event from the frontend when user completes the quiz
@@ -28,7 +24,10 @@ app.get('/results', (req, res) => {
     .sendFile(path.join(__dirname, '../index.html'));
 });
 
-
+// serve index.html on all the pages
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
+});
 
 // global error handler
 app.use((err, req, res, next) => {
