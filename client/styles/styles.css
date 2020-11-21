@@ -1,21 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Shrikhand&display=swap');
+
 body {
-  box-sizing: content-box;
-  background: rgb(131, 58, 180);
+	box-sizing: content-box;
+	/* background: url("https://user-images.githubusercontent.com/54503796/99884480-83ec8180-2bfc-11eb-824b-2c484ba02014.jpg"); */
+	/* background: url("https://user-images.githubusercontent.com/54503796/99885890-1ba29d80-2c06-11eb-9852-199778c60251.jpg");
+  background-size: 50%; */
+	background: rgb(215, 247, 244);
+	background: url('https://user-images.githubusercontent.com/54503796/99887077-5957f400-2c0f-11eb-9720-eebdf664f283.png'),
+		linear-gradient(
+			90deg,
+			rgba(215, 247, 244, 1) 0%,
+			rgba(177, 241, 180, 1) 27%,
+			rgba(240, 232, 127, 1) 50%,
+			rgba(254, 189, 82, 1) 72%,
+			rgba(255, 107, 0, 1) 100%
+		);
+}
+
+h1 {
+	font-family: 'Shrikhand', cursive;
+	font-size: 5em;
+	color: #3a057b;
+	padding: 0;
+	margin: 0 0 0 60px;
 }
 
 #assessment-page {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
 }
 
 .window {
-  border: solid 1px black;
+	border: solid 0px black;
+	padding: 40px 0 0 40px;
+	margin: 0;
 }
 
 .question {
-  border: dotted 1px grey;
+	border: dotted 0px grey;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1.3em;
+	/* margin: 10px; */
+	padding-top: 15px;
 }
 
-button {
-  width: 5%;
+.window button {
+	padding: 0.7em 4em;
+	margin: 30px 120px;
+	border: 0.1em solid #ffffff;
+	border-radius: 0.12em;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-size: 1.3em;
+	color: white;
+	text-align: center;
+	background-color: #3a057b;
+}
+
+.about-window {
+	border-radius: 10px;
+	background: #ffffff;
+	flex: 1;
+	max-width: 100%;
+	padding: 20px 30px;
+	/* margin: 0 60px; */
+	/* margin: 40px 100px 40px 40px; */
+	box-shadow: 5px 10px 20px rgba(10, 10, 10, 0.2);
+}
+
+.about-window h3 {
+	border: 0px solid red;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	font-size: 2em;
+	color: #fe6c06;
+	padding: 5px 0;
+	margin: 0px;
+}
+
+.about-window p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1.25em;
+	padding: 0px;
+	margin: 0;
+}
+
+.assessment-window {
+	flex: 2;
+	max-width: 60%;
+	/* align-self: center; */
+	padding: 30px 40px;
+	margin: 0 120px;
+	/* margin: 40px 40px 40px 0; */
+	border-radius: 10px;
+	background: #ffffff;
+	box-shadow: 5px 10px 20px rgba(10, 10, 10, 0.2);
+}
+
+.assessment-window h3 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-size: 2em;
+	color: #fe6c06;
+	padding: 0;
+	margin: 0 0 5px 0;
 }
