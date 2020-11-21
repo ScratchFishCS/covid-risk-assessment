@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from '../styles/styles.css';
+
 function ResultsPage(props) {
   return (
     <div>
