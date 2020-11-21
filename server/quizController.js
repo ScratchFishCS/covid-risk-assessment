@@ -1,28 +1,6 @@
 const path = require('path');
 const quizController = {};
 
-// starWarsController.getCharacters = (req, res, next) => {
-//   const queryStr = 'SELECT * FROM people';
-//   // const queryStr = 'SELECT people.*, species.name AS species, species.* FROM people LEFT OUTER JOIN species ON people.species_id = species._id';
-//   // testQuery = SELECT p.*, s.name AS species, w.name AS homeworld FROM people p LEFT OUTER JOIN species s ON p.species_id = s._id LEFT OUTER JOIN planets w ON p.homeworld_id = w._id
-//   db.query(queryStr, [], (err, data) => {
-//     if (err) {
-//       return next({
-//         log: 'Database error.',
-//         status: 502,
-//         message: { err: `${err.stack}` },
-//       });
-//     } else {
-//       res.locals.characters = data.rows;
-//       next();
-//     }
-//   });
-// }
-
-// quizController.getResponse = (req, res, next) => {
-//   // add user responses to DB
-// }
-
 const riskFactor = {
   mail: 1,
   takeout: 1,
@@ -91,19 +69,12 @@ quizController.calculateRisk = (req, res, next) => {
     }
   }
   
-  // refactor to include destructuring
   res.locals.activities = {
     riskLevel: maxRisk,
     riskyActs: maxArray
   }
-  // return res.body.activities
+
   return next();
 }
-
-// quizController.sendResult = (req, res, next) => {
-//   // response body will have two key/value pairs:
-//     // number: risk level (i.e. - low risk)
-//     // Activities: [array of activities they engaged in]
-// }
 
 module.exports = quizController;
