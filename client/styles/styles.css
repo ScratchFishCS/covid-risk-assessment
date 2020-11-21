@@ -1,0 +1,22 @@
+body {
+  box-sizing: content-box;
+  background: rgb(131, 58, 180);
+  /* background: linear-gradient(72deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); */
+}
+
+#assessment-page {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.window {
+  border: solid 1px black;
+}
+
+.question {
+  border: dotted 1px grey;
+}
+
+button {
+  width: 5%;
+}
