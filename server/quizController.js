@@ -52,11 +52,11 @@ const riskFactor = {
 }
 
 const risk = {
-  1: low,
-  2: lowMod,
-  3: mod,
-  4: modHigh,
-  5: high
+  1: 'low',
+  2: 'lowMod',
+  3: 'mod',
+  4: 'modHigh',
+  5: 'high',
 }
 
 quizController.calculateRisk = (req, res, next) => {
@@ -66,42 +66,44 @@ quizController.calculateRisk = (req, res, next) => {
     // assign the activities to the risk
     // assign maxNum to highest risk activity
 
-    // if this activity, look in riskFactor object for its value
-
-    // example: [mail, gas, grocery, hair, plane]
-    const acts = req.body.activities
-    let max = 0;
-    let maxRisk;  
-    let maxArray;
-    // let riskLevel;
+  // if this activity, look in riskFactor object for its value
+  // example: [mail, gas, grocery, hair, plane]
+  const acts = req.body.activities;
+  console.log(req.body.activities);
+  let max = 0;
+  let maxRisk;  
+  let maxArray;
+  // let riskLevel;
     
-    // i = 0: riskFactor[mail] = 1, 1 > 0, make max = 1, maxArray = [mail] 
-    // i = 1: riskFactor[gas] = 1, 1 > 1 -> NO, go to else if. 1 === 1 -> YES!, maxArray = [mail, gas]
-    // i = 2: riskFactor[grocery] = 2, 2 > 1 -> YES!, make max = 2, maxArray = [grocery]
-    // i = 3: riskFactor[hair] =  4, 4 > 2 -> YES!, make max = 4, maxArray = [hair]
-    // i = 4; riskFactor[plane] = 4, 4 > 1 -> NO, go to else if. 4 === 4 -> YES!, maxArray = [hair, plane]
+  // i = 0: riskFactor[mail] = 1, 1 > 0, make max = 1, maxArray = [mail] 
+  // i = 1: riskFactor[gas] = 1, 1 > 1 -> NO, go to else if. 1 === 1 -> YES!, maxArray = [mail, gas]
+  // i = 2: riskFactor[grocery] = 2, 2 > 1 -> YES!, make max = 2, maxArray = [grocery]
+  // i = 3: riskFactor[hair] =  4, 4 > 2 -> YES!, make max = 4, maxArray = [hair]
+  // i = 4; riskFactor[plane] = 4, 4 > 1 -> NO, go to else if. 4 === 4 -> YES!, maxArray = [hair, plane]
     
-    for (let i = 0; i < acts.length; i += 1) {
-      if (riskFactor[acts[i]] > max) {
-        max = riskFactor[acts[i]]
-        maxRisk = risk[max] 
-        maxArray = [acts[i]]
-      } else if (riskFactor[acts[i]] === max) {
-        maxArray.push(acts[i])
-      }
+  for (let i = 0; i < acts.length; i += 1) {
+    if (riskFactor[acts[i]] > max) {
+      max = riskFactor[acts[i]];
+      maxRisk = risk[max];
+      maxArray = [acts[i]];
+    } else if (riskFactor[acts[i]] === max) {
+      maxArray.push(acts[i]);
     }
-
-
-
-
-
-
+  }
+  
+  // refactor to include destructuring
+  res.locals.activities = {
+    riskLevel: maxRisk,
+    riskyActs: maxArray
+  }
+  // return res.body.activities
+  return next();
 }
 
-quizController.sendResult = (req, res, next) => {
-  // response body will have two key/value pairs:
-    // number: risk level (i.e. - low risk)
-    // Activities: [array of activities they engaged in]
-}
+// quizController.sendResult = (req, res, next) => {
+//   // response body will have two key/value pairs:
+//     // number: risk level (i.e. - low risk)
+//     // Activities: [array of activities they engaged in]
+// }
 
 module.exports = quizController;
