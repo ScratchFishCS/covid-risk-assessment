@@ -1,14 +1,11 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import AssessmentWindow from './AssessmentWindow.jsx';
 import AboutWindow from './AboutWindow.jsx';
-// import styles from '../styles/styles.css';
+import styles from '../styles/styles.css';
 
 function AssessmentPage(props) {
-  const redirectToResults = () => {
-    return <Redirect to="/results" />;
-  };
-
+  console.log(props);
   return (
     <div>
       <h1>Assessment Page</h1>
@@ -17,14 +14,18 @@ function AssessmentPage(props) {
           <AboutWindow />
         </div>
         <div className="window">
-          <AssessmentWindow />
-          <button
-            onClick={(e) => {
-              redirectToResults();
-            }}
-          >
-            Submit
-          </button>
+          <AssessmentWindow add={props.add} remove={props.remove} />
+          {/* // return <Redirect to="/results"></Redirect>; */}
+
+          <NavLink to="/results">
+            <button
+              onClick={() => {
+                props.submitAnswers();
+              }}
+            >
+              Submit
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>

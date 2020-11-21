@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import AssessmentPage from './components/AssessmentPage.jsx';
 import ResultsPage from './components/ResultsPage.jsx';
@@ -14,41 +14,75 @@ class App extends Component {
       answers: [],
     };
 
-    // this.submitAnswers = this.submitAnswers.bind(this);
+    this.submitAnswers = this.submitAnswers.bind(this);
+    this.addToAnswers = this.addToAnswers.bind(this);
+    this.removeFromAnswers = this.removeFromAnswers.bind(this);
   }
 
-  sumbitAnswers() {
-    // gather responses
-    // get response from backend
-    // save response in this.riskLevel
+  submitAnswers() {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ activities: this.state.answers }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('response includes', data);
+        const newRisk = data.riskLevel;
+        const newRiskyActs = data.riskyActs;
+
+        this.setState({
+          ...this.state,
+          riskLevel: newRisk,
+          riskyActs: newRiskyActs,
+        });
+      });
+  }
+
+  addToAnswers(keyword) {
+    const newAnswers = this.state.answers.slice();
+    newAnswers.push(keyword);
+
+    console.log('keyword is', keyword, 'new answers include :', newAnswers);
+    this.setState({
+      ...this.state,
+      answers: newAnswers,
+    });
+  }
+
+  removeFromAnswers(keyword) {
+    let newAnswers = this.state.answers.slice();
+    newAnswers = newAnswers.filter((answer) => answer !== keyword);
+
+    console.log('keyword was ', keyword, 'new answers include :', newAnswers);
+    this.setState({
+      ...this.state,
+      answers: newAnswers,
+    });
   }
 
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <h1>Covid Risk Assessment Quiz</h1>
-          <Switch>
-            {/* <Route path="/" component={AssessmentPage} /> */}
-            <Route
-              path="/"
-              render={() => (
-                <AssessmentPage submitAnswers={this.state.submitAnswers} />
-              )}
+      <div>
+        <h1>Covid Risk Assessment Quiz</h1>
+        <Switch>
+          <Route exact path="/">
+            <AssessmentPage
+              submitAnswers={this.submitAnswers}
+              add={this.addToAnswers}
+              remove={this.removeFromAnswers}
             />
-            <Route
-              path="/results"
-              render={() => (
-                <ResultsPage
-                  riskLevel={this.state.riskLevel}
-                  riskyActs={this.state.riskyActs}
-                />
-              )}
+          </Route>
+
+          <Route path="/results">
+            <ResultsPage
+              riskLevel={this.state.riskLevel}
+              riskyActs={this.state.riskyActs}
             />
-            <Route component={ErrorPage} />
-          </Switch>
-        </div>
-      </BrowserRouter>
+          </Route>
+          <Route component={ErrorPage} />
+        </Switch>
+      </div>
     );
   }
 }
