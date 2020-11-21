@@ -17,6 +17,8 @@ class App extends Component {
     this.submitAnswers = this.submitAnswers.bind(this);
     this.addToAnswers = this.addToAnswers.bind(this);
     this.removeFromAnswers = this.removeFromAnswers.bind(this);
+    this.getRiskLevel = this.getRiskLevel.bind(this);
+    this.getRiskyActs = this.getRiskyActs.bind(this);
   }
 
   submitAnswers() {
@@ -27,9 +29,9 @@ class App extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('response includes', data);
-        const newRisk = data.riskLevel;
-        const newRiskyActs = data.riskyActs;
+        console.log('risky acts include', data.activities.riskyActs);
+        const newRisk = data.activities.riskLevel;
+        const newRiskyActs = data.activities.riskyActs;
 
         this.setState({
           ...this.state,
@@ -61,6 +63,14 @@ class App extends Component {
     });
   }
 
+  getRiskyActs() {
+    return this.state.riskyActs;
+  }
+
+  getRiskLevel() {
+    return this.state.riskLevel;
+  }
+
   render() {
     return (
       <div>
@@ -78,6 +88,8 @@ class App extends Component {
             <ResultsPage
               riskLevel={this.state.riskLevel}
               riskyActs={this.state.riskyActs}
+              getRiskLevel={this.getRiskLevel}
+              getRiskyActs={this.getRiskyActs}
             />
           </Route>
           <Route component={ErrorPage} />
